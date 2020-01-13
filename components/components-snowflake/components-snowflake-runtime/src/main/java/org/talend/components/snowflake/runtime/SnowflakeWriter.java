@@ -208,7 +208,7 @@ public class SnowflakeWriter implements WriterWithFeedback<Result, IndexedRecord
                     connectionProperties1 = sprops.getConnectionProperties();
                 }
 
-                TableActionConfig conf = new SnowflakeTableActionConfig(sprops.convertColumnsAndTableToUppercase.getValue());
+                TableActionConfig conf = createTableActionConfig();
 
                 Schema schemaForCreateTable = getSchemaForTableAction(datum);
 
@@ -222,6 +222,20 @@ public class SnowflakeWriter implements WriterWithFeedback<Result, IndexedRecord
                 throw new IOException(e.getMessage(), e);
             }
         }
+    }
+
+    /**
+     * Creates configuration which is used during table action (like create table)
+     * Customizes SQLType to TypeName map to provide quickfix, which allows user to specify Snowflake type for
+     * Date and Time values
+     *
+     * @return TableActionConfig
+     */
+    private TableActionConfig createTableActionConfig() {
+        TableActionConfig conf = new SnowflakeTableActionConfig(sprops.convertColumnsAndTableToUppercase.getValue());
+        String outputDateType = sprops.dateMapping.getValue().toString();
+        conf.CUSTOMIZE_SQLTYPE_TYPENAME.put(SnowflakeTableActionConfig.DI_DATE, outputDateType);
+        return  conf;
     }
 
     private Schema getSchemaForTableAction(Object datum) {
