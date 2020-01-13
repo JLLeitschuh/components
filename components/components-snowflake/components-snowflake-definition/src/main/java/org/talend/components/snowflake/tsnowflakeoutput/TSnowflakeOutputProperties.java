@@ -71,6 +71,12 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
 
     public Property<Boolean> convertEmptyStringsToNull = newBoolean("convertEmptyStringsToNull");
 
+    /**
+     * Advanced property which sets Date columns mapping to one of Snowflake Date and Time types.
+     * Default value is DATE - the same default mapping as it was before this property introduction
+     */
+    public Property<DateMapping> dateMapping = newEnum("dateMapping", DateMapping.class);
+
     // Have to use an explicit class to get the override of afterTableName(), an anonymous
     // class cannot be public and thus cannot be called.
     public class TableSubclass extends SnowflakeTableProperties {
@@ -135,7 +141,7 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
         convertEmptyStringsToNull.setValue(false);
 
         usePersonalDBType.setValue(false);
-
+        dateMapping.setValue(DateMapping.DATE);
     }
 
     @Override
@@ -156,6 +162,9 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
         Widget dbTypeTableWidget = new Widget(dbtypeTable);
         advancedForm.addRow(dbTypeTableWidget.setWidgetType(Widget.TABLE_WIDGET_TYPE));
         dbTypeTableWidget.setVisible(false);
+        Widget dateMappingWidget = new Widget(dateMapping);
+        dateMappingWidget.setVisible(false);
+        advancedForm.addRow(dateMappingWidget);
     }
 
     public void afterOutputAction() {
@@ -178,6 +187,7 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
             if (advForm != null) {
                 advForm.getWidget(dbtypeTable.getName()).setVisible(usePersonalDBType.getValue() && isCreateTableAction);
                 advForm.getWidget(usePersonalDBType.getName()).setVisible(isCreateTableAction);
+                advForm.getWidget(dateMapping.getName()).setVisible(isCreateTableAction);
 
                 boolean isUpsert = OutputAction.UPSERT.equals(outputAction.getValue());
                 form.getWidget(upsertKeyColumn.getName()).setHidden(!isUpsert);
