@@ -233,8 +233,13 @@ public class SnowflakeWriter implements WriterWithFeedback<Result, IndexedRecord
      */
     private TableActionConfig createTableActionConfig() {
         TableActionConfig conf = new SnowflakeTableActionConfig(sprops.convertColumnsAndTableToUppercase.getValue());
-        String outputDateType = sprops.dateMapping.getValue().toString();
-        conf.CUSTOMIZE_SQLTYPE_TYPENAME.put(SnowflakeTableActionConfig.DI_DATE, outputDateType);
+        if (sprops.useDateMapping.getValue()) {
+            // will map java.util.Date to fake DI_DATE SQL type
+            conf.CONVERT_JAVATYPE_TO_SQLTYPE.put("java.util.Date", SnowflakeTableActionConfig.DI_DATE);
+            String outputDateType = sprops.dateMapping.getValue().toString();
+            // maps fake DI_DATE SQL type to Snowflake type chosen by user in advanced settings
+            conf.CUSTOMIZE_SQLTYPE_TYPENAME.put(SnowflakeTableActionConfig.DI_DATE, outputDateType);
+        } // else use mapping to SQL type - to Date type as before
         return  conf;
     }
 

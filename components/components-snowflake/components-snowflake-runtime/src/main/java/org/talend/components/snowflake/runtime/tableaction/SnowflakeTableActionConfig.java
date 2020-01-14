@@ -41,7 +41,6 @@ public class SnowflakeTableActionConfig extends TableActionConfig {
         this.CONVERT_LOGICALTYPE_TO_SQLTYPE.put(LogicalTypes.decimal(32), Types.FLOAT);
 
         this.CONVERT_JAVATYPE_TO_SQLTYPE.put("java.math.BigDecimal", Types.FLOAT);
-        this.CONVERT_JAVATYPE_TO_SQLTYPE.put("java.util.Date", DI_DATE);
 
         this.CONVERT_SQLTYPE_TO_ANOTHER_SQLTYPE.put(Types.BLOB, Types.BINARY);
 

@@ -72,6 +72,11 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
     public Property<Boolean> convertEmptyStringsToNull = newBoolean("convertEmptyStringsToNull");
 
     /**
+     * Advanced property which specifies whether date mapping should be used
+     */
+    public Property<Boolean> useDateMapping = newBoolean("useDateMapping");
+
+    /**
      * Advanced property which sets Date columns mapping to one of Snowflake Date and Time types.
      * Default value is DATE - the same default mapping as it was before this property introduction
      */
@@ -141,6 +146,7 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
         convertEmptyStringsToNull.setValue(false);
 
         usePersonalDBType.setValue(false);
+        useDateMapping.setValue(false);
         dateMapping.setValue(DateMapping.DATE);
     }
 
@@ -162,9 +168,14 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
         Widget dbTypeTableWidget = new Widget(dbtypeTable);
         advancedForm.addRow(dbTypeTableWidget.setWidgetType(Widget.TABLE_WIDGET_TYPE));
         dbTypeTableWidget.setVisible(false);
+
+        Widget useDateMappingWidget = new Widget(useDateMapping);
+        useDateMappingWidget.setVisible(false);
+        advancedForm.addRow(useDateMappingWidget);
+
         Widget dateMappingWidget = new Widget(dateMapping);
         dateMappingWidget.setVisible(false);
-        advancedForm.addRow(dateMappingWidget);
+        advancedForm.addColumn(dateMappingWidget);
     }
 
     public void afterOutputAction() {
@@ -172,6 +183,10 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
     }
 
     public void afterTableAction() {
+        refreshLayout(getForm(Form.MAIN));
+    }
+
+    public void afterUseDateMapping(){
         refreshLayout(getForm(Form.MAIN));
     }
 
@@ -187,7 +202,8 @@ public class TSnowflakeOutputProperties extends SnowflakeConnectionTableProperti
             if (advForm != null) {
                 advForm.getWidget(dbtypeTable.getName()).setVisible(usePersonalDBType.getValue() && isCreateTableAction);
                 advForm.getWidget(usePersonalDBType.getName()).setVisible(isCreateTableAction);
-                advForm.getWidget(dateMapping.getName()).setVisible(isCreateTableAction);
+                advForm.getWidget(useDateMapping.getName()).setVisible(isCreateTableAction);
+                advForm.getWidget(dateMapping.getName()).setVisible(useDateMapping.getValue() && isCreateTableAction);
 
                 boolean isUpsert = OutputAction.UPSERT.equals(outputAction.getValue());
                 form.getWidget(upsertKeyColumn.getName()).setHidden(!isUpsert);
