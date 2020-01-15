@@ -128,7 +128,7 @@ public class SnowflakeWritersTestIT extends SnowflakeRuntimeIOTestIT {
                 tableProps.tableName.getName(), tableProps);
         LOGGER.info(String.valueOf(tableProps.getValidationResult()));
         assertEquals(ValidationResult.Result.ERROR, tableProps.getValidationResult().getStatus());
-        assertThat(tableProps.getValidationResult().getMessage(), containsString("BADONE"));
+        assertThat(tableProps.getValidationResult().getMessage(), containsString("UNEXPECTED_EXCEPTION"));
     }
 
     @Test
