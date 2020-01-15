@@ -21,6 +21,7 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -40,6 +41,8 @@ import org.talend.components.snowflake.tsnowflakeoutput.TSnowflakeOutputDefiniti
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
+@Ignore("Ignored because pax url uses http://repo1.maven.org/maven2 repository , but maven central supports only https " +
+        "since 15 Jan 2020")
 public class OsgiSnowflakeTestIT extends SnowflakeTestIT {
 
     @Inject

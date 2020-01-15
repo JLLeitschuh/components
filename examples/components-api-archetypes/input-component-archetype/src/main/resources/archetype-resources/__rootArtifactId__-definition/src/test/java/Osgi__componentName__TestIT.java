@@ -16,6 +16,7 @@ import static org.ops4j.pax.exam.CoreOptions.composite;
 import static org.ops4j.pax.exam.CoreOptions.linkBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
@@ -26,6 +27,8 @@ import org.talend.components.api.ComponentsPaxExamOptions;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
+@Ignore("Ignored because pax url uses http://repo1.maven.org/maven2 repository , but maven central supports only https " +
+        "since 15 Jan 2020")
 public class Osgi${componentName}TestIT extends ${componentName}TestBase {
 
     @Configuration
