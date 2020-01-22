@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.talend.components</groupId>
-    <version>0.26.0</version>
+    <version>0.26.0.1-SNAPSHOT</version>
     <artifactId>components</artifactId>
     <packaging>pom</packaging>
 
@@ -31,7 +31,7 @@
         <!-- module>core</module -->
         <!-- module>examples</module -->
         <!-- module>components</module -->
-        <module>services</module>
+        <!-- module>services</module -->
     </modules>
     <build>
         <plugins>
