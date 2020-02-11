@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>org.talend.components</groupId>
-    <version>0.26.1</version>
+    <version>0.26.2-SNAPSHOT</version>
 
     <artifactId>components-api-service-rest-all-components</artifactId>
 
@@ -28,7 +28,7 @@
         <talend.releases.repo>https://artifacts-oss.talend.com/nexus/content/repositories/TalendOpenSourceRelease/</talend.releases.repo>
         <spring.releases.repo>https://repo.spring.io/libs-release/</spring.releases.repo>
         <!-- Dependency versions -->
-        <components.version>0.26.1</components.version>
+        <components.version>0.26.2-SNAPSHOT</components.version>
         <daikon.version>0.31.4</daikon.version>
         <!-- Used for Docker images name -->
         <git_branch>local</git_branch>

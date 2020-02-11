@@ -5,7 +5,7 @@
     <groupId>org.talend.components</groupId>
     <artifactId>components-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.26.1</version>
+    <version>0.26.2-SNAPSHOT</version>
     <name>Component Parent POM</name>
 
     <properties>
@@ -25,7 +25,7 @@
         <talend.snapshots.repo>https://artifacts-oss.talend.com/nexus/content/repositories/TalendOpenSourceSnapshot/</talend.snapshots.repo>
         <talend.releases.repo>https://artifacts-oss.talend.com/nexus/content/repositories/TalendOpenSourceRelease/</talend.releases.repo>
 
-        <components.version>0.26.1</components.version>
+        <components.version>0.26.2-SNAPSHOT</components.version>
         <daikon.version>0.31.4</daikon.version>
 
         <!-- plugin versions -->

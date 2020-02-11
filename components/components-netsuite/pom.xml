@@ -3,7 +3,7 @@
 
     <groupId>org.talend.components</groupId>
     <artifactId>components-netsuite-aggregator</artifactId>
-    <version>0.26.1</version>
+    <version>0.26.2-SNAPSHOT</version>
 
     <name>Components - NetSuite Aggregator</name>
     <packaging>pom</packaging>

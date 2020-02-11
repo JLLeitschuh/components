@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.talend.components</groupId>
         <artifactId>components-parent</artifactId>
-        <version>0.26.1</version>
+        <version>0.26.2-SNAPSHOT</version>
         <relativePath>../../../components-parent/pom.xml</relativePath>
     </parent>
     <artifactId>components-marketo-runtime</artifactId>
