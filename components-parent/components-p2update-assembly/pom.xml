@@ -3,7 +3,7 @@
 
 	<groupId>org.talend.components</groupId>
 	<artifactId>components-p2update-assembly</artifactId>
-	<version>0.27.4</version>
+	<version>0.27.5-SNAPSHOT</version>
 	<name>Assembly for building P2 updatesite for components</name>
     <properties>
         <!-- repositories -->
