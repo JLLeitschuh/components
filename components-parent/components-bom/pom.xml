@@ -153,7 +153,7 @@
         <netty-codec.version>4.1.17.Final</netty-codec.version>
         <netty-common.version>4.1.17.Final</netty-common.version>
         <netty-handler-proxy.version>4.1.17.Final</netty-handler-proxy.version>
-        <netty-handler.version>4.1.17.Final</netty-handler.version>
+        <netty-handler.version>4.1.46.Final</netty-handler.version>
         <netty-resolver.version>4.1.17.Final</netty-resolver.version>
         <netty-tcnative-boringssl-static.version>1.1.33.Fork26</netty-tcnative-boringssl-static.version>
         <netty-transport-native-epoll.version>4.0.27.Final</netty-transport-native-epoll.version>
